@@ -1,16 +1,15 @@
 const { default: axios } = require("axios");
 
 module.exports = {
-    handler : async (sock, m, $next) => {
+    handler: async (sock, m, $next) => {
         try {
-            return $next;
-            if(!m.isGroup) return $next
-            if(!['imageMessage'].includes(m.mtype)) return $next;
+            if (m.isGroup) return $next
+            if (!['imageMessage'].includes(m.mtype)) return $next;
             const { buffer } = await m.download()
             const response = await axios.post('https://luminai.my.id/', {
                 imageBuffer: buffer,
                 model: 'gpt-4o',
-                content : `Anda adalah asisten di sebuah komunitas WhatsApp yang memiliki tanggung jawab untuk memfilter gambar. Tugas utama Anda adalah mengidentifikasi apakah gambar yang dikirim dalam grup berisi konten pornografi atau tidak.
+                content: `Anda adalah asisten di sebuah komunitas WhatsApp yang memiliki tanggung jawab untuk memfilter gambar. Tugas utama Anda adalah mengidentifikasi apakah gambar yang dikirim dalam grup berisi konten pornografi atau tidak.
     
 Berikut adalah panduan yang harus Anda ikuti:
 
@@ -20,8 +19,8 @@ Berikut adalah panduan yang harus Anda ikuti:
 4. Jangan memberikan jawaban selain "yes" atau "no".
 Pastikan untuk selalu berhati-hati dalam menilai konten gambar, dan hindari memberikan penilaian yang tidak sesuai.`
             });
-            
-            if(response.data.result.length == 0) {
+
+            if (response.data.result.length == 0) {
                 await m._reply('Gambar yang Anda kirim mengandung konten pornografi.')
                 await sock.sendMessage(m.chat, { delete: m.key })
             }

@@ -7,37 +7,37 @@ module.exports = {
 
         Important For Bot Schema:
         - You can change the bot settings via commands, 
-          or you can make changes manually via the configuration with the condition that after making changes you need to run the /reset-db-bot command.
+        or you can make changes manually via the configuration with the condition that after making changes you need to run the /reset-db-bot command.
     */
     DATABASE_SCHEMA: {
-        bot : {
+        bot: {
             mode: 'public',
             lang: 'id',
             prefix: ['/', '.', '!'],
             owners: {
-                '6285174902345': 'Ilsya',
+                '6285183778737': 'Fian',
                 // '628xxx': 'Name',
             },
             exif: {
-                pack: "BOT 6285731618404",
-                author: "Owner Ilsya",
+                pack: "BOT",
+                author: "Owner Fian",
             },
             created_at: moment(),
             updated_at: moment(),
         },
-        user : {
+        user: {
             plan: "free", // free or pro
             plan_expire: false, // false = unlimited
             limit: 20, // false -> unlimited
             exp: 0,
-            balance: 1000000, // poin
+            balance: 0, // poin
             blacklist: false, // false = not in blacklist, true = in blacklist permanently, timestamp = in blacklist for some time
             blacklist_reason: '', // reason for blacklist
             daily: null,
             updated_at: moment(), // update every time using bot
             created_at: moment(), // create time
         },
-        group : {
+        group: {
             mode: 'admin-only', // admin-only or all
             antilink: false,
             nsfw: false,
@@ -50,12 +50,12 @@ module.exports = {
             created_at: moment(),
         },
         blockchain: {
-            difficulty: 2,
-            miningReward: 1000000, // 1jt
-            maxSupply: 100000000000,// 1 miliar
+            difficulty: 4,
+            miningReward: 50, // 50
+            maxSupply: 21000000,// 21 juta
             currentSupply: 0,
             blocksMined: 0,
-            blockRewardHalvingInterval: 1000,
+            blockRewardHalvingInterval: 210000, // 210 ribu
             totalTransactions: 0
         }
     },

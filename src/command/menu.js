@@ -5,18 +5,18 @@ const path = require('path');
 const config = require("../../config.js");
 
 module.exports = {
-    name : "menu",
-    description : "Menu Bot Velixs-Bot",
-    cmd : ['help', 'menu'],
-    run : async({ m, sock }) => {
+    name: "menu",
+    description: "Menu Bot",
+    cmd: ['help', 'menu'],
+    run: async ({ m, sock }) => {
         let text = ''
         let label = 'All Menu';
-        text += `*\`Hai ${m.db.user.name}\`*\nSelamat ${timer2()} \n\n`
-        text += `\`Blockchain\`\n> Mata uang bot yang bisa kamu gunakan untuk membeli limit taruhan dan lain lain.\n\n\n`
+        // text += `*\`Hai ${m.db.user.name}\`*\nSelamat ${timer2()} \n\n`
+        // text += `\`Blockchain\`\n> Mata uang bot yang bisa kamu gunakan untuk membeli limit taruhan dan lain lain.\n\n\n`
         text += String.fromCharCode(8206).repeat(4001)
-        if(m.body.arg) {
+        if (m.body.arg) {
             let filterMenu = menuByLabel.get(m.body.arg)
-            if(!filterMenu) return
+            if (!filterMenu) return
             label = m.body.arg.toUpperCase()
             text += `\`❖ ${m.body.arg.toUpperCase()}\`\n`
             filterMenu.forEach((v) => {
@@ -32,13 +32,13 @@ module.exports = {
             })
         }
         text += `\n`
-        text += `_👑 author: Ilsya_\n`
+        text += `_👑 author: Fian\n`
 
         await m._sendMessage(m.chat, {
             text,
             contextInfo: {
                 externalAdReply: {
-                    title: 'Nakiri Whatsapp BOT',
+                    title: 'Yui BOT',
                     body: `- ${label} -`,
                     mediaType: 2,
                     thumbnail: m.db.bot.icon,

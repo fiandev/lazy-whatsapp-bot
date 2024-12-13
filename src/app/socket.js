@@ -18,18 +18,18 @@ const startSocket = async () => {
         printQRInTerminal: true,
         auth: {
             creds: state.creds,
-            keys: makeCacheableSignalKeyStore(state.keys, pino().child({ 
-                level: 'silent', 
-                stream: 'store' 
+            keys: makeCacheableSignalKeyStore(state.keys, pino().child({
+                level: 'silent',
+                stream: 'store'
             })),
         },
         logger: pino({ level: "silent" }),
-        browser: ['VelixS', 'Safari', '3.0'],
+        browser: ['Safari', '3.0'],
         markOnlineOnConnect: true,
         generateHighQualityLinkPreview: true,
         patchMessageBeforeSending: (message) => {
             const requiresPatch = !!(
-                message.buttonsMessage 
+                message.buttonsMessage
                 || message.templateMessage
                 || message.listMessage
             );
@@ -47,7 +47,7 @@ const startSocket = async () => {
                 };
             }
             return message;
-        }, 
+        },
         msgRetryCounterCache,
         defaultQueryTimeoutMs: undefined,
     });
